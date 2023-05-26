@@ -8,78 +8,100 @@
 .App {
   height: 100vh;
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #051b58;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  background: #141414;
 }
 
-.container {
-  height: 500px;
-  width: 700px;
-  background: #FFF;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  border-radius: 10px;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.315);
-}
-
-.containerTop {
-  height: 40%;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #1a1a1a;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-
-.divPicture {
-  height: 170px;
-  width: 170px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.containerBottom {
-  height: 60%;
+header {
+  height: 100%;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: rgb(197, 196, 196);
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  background: #141414;
 }
 
-.containerLeft {
+.headerLeft {
   height: 100%;
   width: 50%;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.containerTxt {
+.headerTxt {
+  font-size: 3em;
+  color: #f5f5f5;
+  text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.719);
+}
+
+.headerRight {
+  height: 100%;
+  width: 50%;
   display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.headerRight img {
+  height: 300px;
+  width: 300px;
+  border-radius: 50%;
+  border: 3px solid #f5f5f5;
+}
+
+.userContainer {
+  height: 100%;
+  width: 100%;
+  background-color: #141414;
+  display: flex;
+  align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+
+.userContainer h1 {
+  text-align: center;
+  color: #F5F5F5;
+  font-size: 2.5em;
+}
+
+.userInfo {
+  height: 60%;
+  width: 90%;
+  background: #F5F5F5;
+  border-radius: 10px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.userLeft {
+  height: 100%;
+  width: 50%;
+  border-right: 1px solid gray;
+}
+
+.userRight {
+  height: 100%;
+  width: 50%;
+}
+
+.userTxt {
   margin-top: 20px;
   padding: 0px 10px;
 }
 
-.containerRight {
-  height: 100%;
-  width: 50%;
+.userTxt p {
+  font-size: 2em;
+}
+
+.userName {
+  display: flex;
+}
+
+.lastName {
+  margin-left: 10px;
 }
 
 button {
@@ -87,51 +109,71 @@ button {
   padding: 10px 20px;
   border-radius: 20px;
   border: none;
-  cursor: pointer;
-  color: #1A1A1A;
-  background-color: #C5C4C4;
+  background: #F5F5F5;
   font-weight: bold;
+  cursor: pointer;
 }
 
 button:hover {
-  background-color: #d4d4d4;
+  background: #e0e0e0;
   transition: .5s;
 }
 
-@media(max-width: 725px){
-    .container {
-      height: 500px;
-      width: 500px;
-    }
+@media(max-width:700px){
+  header {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column-reverse;
+  }
+
+  .headerTxt {
+    text-align: center;
+  }
+
+  .headerLeft {
+    height: 50%;
+    width: 100%;
+  }
+
+  .headerRight {
+    height: 50%;
+    width: 100%;
+  }
 }
 
-@media(max-width: 530px){
-  .App {
-    height: 100%;
-  }
-
-  .container {
-    height: 800px;
-    width: 400px;
-  }
-
-  .containerTop {
-    height: 30%;
-  }
-
-  .containerBottom {
-    height: 70%;
+@media(max-width:570px){
+  .userInfo {
+    height: 90%;
+    width: 90%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
   }
 
-  .containerLeft {
+  .userContainer {
+    height: 150vh;
     width: 100%;
   }
 
-  .containerRight {
+  .userLeft {
+    height: 100%;
+    width: 100%;
+    border-bottom: 1px solid gray;
+  }
+
+  .userRight {
+    height: 100%;
     width: 100%;
   }
+
+  .userTxt {
+    margin-top: 30px;
+  }
 }
+
+
+

@@ -1,13 +1,19 @@
 import './App.css';
-import UserPicture from './components/User Picture/UserPicture';
-import UserName from './components/User Name/UserName';
-import UserAge from './components/User Age/UserAge';
-import UserCity from './components/User City/UserCity';
-import UserPhone from './components/User Phone/UsePhone';
-import UserStreet from './components/User Street/UserStreet';
-import UserCountry from './components/User Country/UserCountry';
+import { useState, useEffect } from 'react';
+import api from './services/api'
 
 function App() {
+
+  const [user, setUser] = useState()
+
+  useEffect(() => {
+    api
+    .get('?exc=login,registered,id')
+    .then(res => setUser(res.data.results[0]))
+    .catch((err) => {
+      console.log('Ops, algo deu errado!') 
+    })
+  }, [])
 
   function Refresh(){
 
@@ -17,37 +23,79 @@ function App() {
 
   return (
     <div className='App'>
-      <div className='container'>
-        <div className='containerTop'>
-
-        <UserPicture></UserPicture>
-
+      <header>
+        <div className='headerLeft'>
+          <div className='headerTxt'>
+            <h2>Welcome</h2>
+            <h1>{user?.name?.first}</h1> 
+          </div>
         </div>
 
-        <div className='containerBottom'>
-          <div className='containerLeft'>
+        <div className='headerRight'>
+          <img src={user?.picture?.large}></img> 
+        </div>
+      </header>
 
-            <UserName></UserName>
+      <div className='userContainer'>
 
-            <UserAge></UserAge>
+        <h1>{user?.name?.first} Info</h1> 
 
-            <UserCity></UserCity>
+        <div className='userInfo'>
+          <div className='userLeft'>
+
+            <div className='userTxt'>
+              <label>Name:</label> 
+              <div className='userName'>
+                <p>{user?.name?.first}</p>
+                <div className='lastName'>
+                  <p>{user?.name?.last}</p>
+                </div>
+              </div>
+            </div>
+
+            <div className='userTxt'>
+              <label>Gender:</label> 
+              <p>{user?.gender}</p> 
+            </div>
+
+            <div className='userTxt'>
+              <label>Age:</label> 
+              <p>{user?.dob?.age}</p> 
+            </div>
+
+            <div className='userTxt'>
+              <label>Nationality:</label> 
+              <p>{user?.nat}</p> 
+            </div>
 
           </div>
 
-          <div className='containerRight'>
+          <div className='userRight'> 
+              <div className='userTxt'>
+                  <label>City:</label> 
+                  <p>{user?.location?.city}</p> 
+              </div>
 
-          <UserPhone></UserPhone>
+              <div className='userTxt'>
+                  <label>State:</label> 
+                  <p>{user?.location?.state}</p> 
+              </div>
 
-          <UserStreet></UserStreet>
+              <div className='userTxt'>
+                  <label>Country:</label> 
+                  <p>{user?.location?.country}</p> 
+              </div>
 
-          <UserCountry></UserCountry>
-
+              <div className='userTxt'>
+                  <label>Phone:</label> 
+                  <p>{user?.phone}</p> 
+              </div>
           </div>
         </div>
+
+        <button onClick={Refresh}>Refresh</button>
+
       </div>
-
-      <button onClick={Refresh}>Refresh</button>
     </div>
   );
 }
